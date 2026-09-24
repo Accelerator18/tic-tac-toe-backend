@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крестики-нолики Backend 04</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<main class="page">
+    <section class="layout">
+        <header class="header card">
+            <div>
+                <h1>Крестики-нолики</h1>
+                <p class="subtitle">Игра</p>
+            </div>
+            <div id="userBadge" class="user-badge">Гость</div>
+        </header>
+
+        <section class="card auth-card">
+            <h2>1. Аккаунт</h2>
+            <div class="auth-panel">
+                <input id="login" placeholder="Логин" autocomplete="username">
+                <input id="password" placeholder="Пароль" type="password" autocomplete="current-password">
+                <button id="signupButton" class="secondary">Регистрация</button>
+                <button id="loginButton">Войти</button>
+            </div>
+        </section>
+
+        <section class="card game-card">
+            <div class="game-top">
+                <div>
+                    <h2>2. Игра</h2>
+                    <p id="status" class="status">Сначала зарегистрируйся или войди.</p>
+                </div>
+                <div class="actions">
+                    <button id="newComputerGameButton">Игра с компьютером</button>
+                    <button id="newUserGameButton" class="secondary">Создать игру для 2 игроков</button>
+                </div>
+            </div>
+
+            <div id="gameInfo" class="game-info hidden"></div>
+            <div id="board" class="board"></div>
+        </section>
+
+        <section class="card lists-card">
+            <div class="lists-header">
+                <h2>3. Игры для двух игроков</h2>
+                <button id="refreshButton" class="secondary small">Обновить списки</button>
+            </div>
+
+            <div class="manual-open">
+                <input id="gameUuidInput" placeholder="UUID игры, если нужно открыть вручную">
+                <button id="openGameButton" class="secondary">Открыть</button>
+            </div>
+
+            <div class="lists-grid">
+                <div>
+                    <h3>Доступные игры</h3>
+                    <p class="hint">Тут появляются игры, созданные другим пользователем.</p>
+                    <div id="availableGames" class="game-list empty-list">Войди, чтобы увидеть список.</div>
+                </div>
+                <div>
+                    <h3>Мои игры</h3>
+                    <p class="hint">Твои созданные и присоединённые игры.</p>
+                    <div id="myGames" class="game-list empty-list">Войди, чтобы увидеть список.</div>
+                </div>
+            </div>
+        </section>
+
+        <details class="card api-help">
+            <summary>API endpoints</summary>
+            <pre>POST /auth/signup
+POST /auth/login
+POST /games
+GET  /games/available
+GET  /games/my
+POST /games/&lt;uuid&gt;/join
+GET  /games/&lt;uuid&gt;
+POST /games/&lt;uuid&gt;
+GET  /users/&lt;uuid&gt;</pre>
+        </details>
+    </section>
+</main>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
